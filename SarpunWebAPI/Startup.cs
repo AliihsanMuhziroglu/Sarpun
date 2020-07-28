@@ -35,15 +35,6 @@ namespace SarpunWebAPI
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddControllers();
-            services.AddSwaggerGen(options =>
-            {
-                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
-                {
-                    Title = "Sarpun API",
-                    Description = "Sarpun API Using Swagger",
-                    Version = "v1"
-                });
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,12 +65,6 @@ namespace SarpunWebAPI
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
-            });
-
-            app.UseSwagger();
-            app.UseSwaggerUI(options =>
-            {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json","Sarpun API"); 
             });
         }
     }
