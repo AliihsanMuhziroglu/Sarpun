@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -17,7 +18,8 @@ namespace SarpunWebAPI.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return new string[] { "value1", "value2",userId };
         }
 
         // GET: api/ExampleReadWrite/5

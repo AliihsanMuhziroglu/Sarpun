@@ -9,8 +9,8 @@ using Microsoft.Extensions.Logging;
 using SarpunWebAPI.Models;
 
 namespace SarpunWebAPI.Controllers
-{
-    [Authorize]
+{ 
+     
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
