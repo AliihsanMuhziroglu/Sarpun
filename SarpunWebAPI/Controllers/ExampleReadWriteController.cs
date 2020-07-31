@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,13 +11,15 @@ namespace SarpunWebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ExampleReadWriteController : ControllerBase
     {
         // GET: api/ExampleReadWrite
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return new string[] { "value1", "value2",userId };
         }
 
         // GET: api/ExampleReadWrite/5

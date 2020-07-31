@@ -12,6 +12,9 @@ using SarpunWebAPI.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace SarpunWebAPI
 {
@@ -35,14 +38,35 @@ namespace SarpunWebAPI
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddControllers();
-            services.AddSwaggerGen(options =>
+            services.AddMvc();
+            
+            services.AddAuthentication(options =>
             {
-                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                options.DefaultAuthenticateScheme = "JwtBearer";
+                options.DefaultChallengeScheme = "JwtBearer";
+
+            })
+                .AddJwtBearer("JwtBearer", jwtBearerOptions =>
                 {
-                    Title = "Sarpun API",
-                    Description = "Sarpun API Using Swagger",
-                    Version = "v1"
+                    jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("BUM BE YARAG GARIDES DACMIN GOS BUM")),
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ValidateLifetime = true,
+                        ClockSkew = TimeSpan.FromMinutes(5)
+                    };
                 });
+            services.AddSwaggerGen(setup =>
+            {
+                setup.SwaggerDoc(
+                    "v1",
+                    new Microsoft.OpenApi.Models.OpenApiInfo
+                    {
+                        Title = "Sarpun API",
+                        Version = "v1"
+                    });
             });
         }
 
@@ -68,18 +92,18 @@ namespace SarpunWebAPI
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseSwagger();
+            app.UseSwaggerUI(x =>
+            {
+                x.SwaggerEndpoint("/swagger/v1/swagger.json", "Sarpun API v1");
+            });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
-            });
-
-            app.UseSwagger();
-            app.UseSwaggerUI(options =>
-            {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json","Sarpun API"); 
             });
         }
     }
