@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SarpunWebAPI", "SarpunWebAPI\SarpunWebAPI.csproj", "{899D97A8-0CDD-4F2F-95A9-F77C06E2D450}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SarpunWebAPI", "SarpunWebAPI\SarpunWebAPI.csproj", "{899D97A8-0CDD-4F2F-95A9-F77C06E2D450}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SarpunData", "SarpunData\SarpunData.sqlproj", "{ED217102-4559-4D1E-B2A8-DB23CB33ED64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SarpunMainWebUI", "SarpunMainWebUI\SarpunMainWebUI.csproj", "{D051254B-57CD-4055-B5D8-A2665A7B3211}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,16 @@ Global
 		{899D97A8-0CDD-4F2F-95A9-F77C06E2D450}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{899D97A8-0CDD-4F2F-95A9-F77C06E2D450}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{899D97A8-0CDD-4F2F-95A9-F77C06E2D450}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED217102-4559-4D1E-B2A8-DB23CB33ED64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED217102-4559-4D1E-B2A8-DB23CB33ED64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED217102-4559-4D1E-B2A8-DB23CB33ED64}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{ED217102-4559-4D1E-B2A8-DB23CB33ED64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED217102-4559-4D1E-B2A8-DB23CB33ED64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED217102-4559-4D1E-B2A8-DB23CB33ED64}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D051254B-57CD-4055-B5D8-A2665A7B3211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D051254B-57CD-4055-B5D8-A2665A7B3211}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D051254B-57CD-4055-B5D8-A2665A7B3211}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D051254B-57CD-4055-B5D8-A2665A7B3211}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
